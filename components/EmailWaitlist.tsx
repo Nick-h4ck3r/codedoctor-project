@@ -14,10 +14,11 @@ function EmailWaitlist({}: Props) {
   async function joinWaitlist(e: any) {
     e.preventDefault();
 
-    if (email === "" || !isValidEmail(email))
+    if (email === "" || !isValidEmail(email)) {
       return toast.error("Please enter a valid email.", {
         position: toast.POSITION.TOP_RIGHT,
       });
+    }
 
     try {
       await axios.post("https://light-bee-sari.cyclic.cloud/joinwaitlist", {
@@ -25,20 +26,23 @@ function EmailWaitlist({}: Props) {
       });
       showSuccessToastMessage();
     } catch (error) {
-      showErrorToastMessage();
+      showWarnToastMessage();
     }
   }
 
   const showSuccessToastMessage = () => {
     toast.success("You are now in the waitlist.", {
       position: toast.POSITION.TOP_RIGHT,
+      toastId: "join-waitlist",
     });
   };
 
-  const showErrorToastMessage = () => {
+  const showWarnToastMessage = () => {
     toast.warn("You are already in the waitlist.", {
       position: toast.POSITION.TOP_RIGHT,
+      toastId: "join-waitlist",
     });
+    console.log("function ran");
   };
 
   return (
@@ -62,18 +66,7 @@ function EmailWaitlist({}: Props) {
           </button>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      
     </>
   );
 }
