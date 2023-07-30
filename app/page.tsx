@@ -3,6 +3,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionCard from "@/components/SectionCard";
 import LongSectionCard from "@/components/LongSectionCard";
+import BenefitsCard from "@/components/BenefitsCard";
+import EmailWaitlist from "@/components/EmailWaitlist";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   return (
@@ -37,50 +41,58 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="rounded-full bg-gradient-to-r from-[#ff3bff] via-[#ecbfbf] to-[#5c24ff] p-[0.10rem] mt-4 w-auto max-w-4xl">
-          <div className="emailField flex justify-between bg-black rounded-full pl-6 pr-2 py-2">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              id=""
-              className="bg-transparent outline-none w-[400px]"
-            />
-            <button className="rounded-full border-white border text-white/60 hover:text-white duration-300 py-2 px-4">
-              Join waitlist
-            </button>
-          </div>
-        </div>
+        <EmailWaitlist />
 
         <div className="mx-auto my-14 flex z-20">
-          <Image src={"/heroImage.png"} width={1250} height={100} alt={""} />
+          <Image src={"/heroImage2.png"} width={1500} height={100} alt={""} />
         </div>
-        <div className="static">
-            <Image src={"/white-dot.png"} width={500} height={500} alt={""} className="absolute -bottom-[430px] left-56" />
-            <Image src={"/purple-dot.png"} width={500} height={500} alt={""} className="absolute -bottom-[430px] right-56" />
-          </div>
       </div>
 
-      <div className="section1 bg-black text-center pt-10 my-20 space-y-8">
+      <div className="section1 bg-black text-center mt-0 mb-20 space-y-6">
         <p className="bg-gradient-to-r from-[#4e4be4] to-[#e862fe] bg-clip-text text-transparent text-6xl font-semibold font-urbanist max-w-[1130px] mx-auto leading-tight">
           Boost the speed of your development and test cycles.
         </p>
-        <p className="text-3xl font-normal font-urbanist max-w-8xl mx-auto">
+        <p className="text-3xl font-normal font-urbanist max-w-7xl mx-auto">
           With AI-driven test case generation and code analysis, problems may be
           found and fixed more quickly.
         </p>
       </div>
 
-      {/* <div className="benefitsSection bg-black h-[400px] py-20">
+      <div className="benefitsSection max-h-fit py-20">
+        <BenefitsCard
+          ben1="CI/CD Pipeline Generate"
+          ben2="Build / Deploymnent"
+          right={false}
+        />
+
         <motion.div
           animate={{
-            scale: [1, 1.1, 1.3, 1.2, 1],
-            rotate: [150, 270, 135, 200, 70, 150],
+            scale: [1.2, 1.3, 1.2, 1.3, 1.2],
+            rotate: [0, 180, 360],
           }}
-          transition={{ repeat: Infinity, duration: 10 }}
-          className="rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 my-20 w-56 h-60 mx-auto"
-        ></motion.div>
-      </div> */}
+          transition={{
+            ease: "easeInOut",
+            duration: 8,
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
+          className="rounded-full bg-gradient-to-r from-[#4e4be4] to-[#e862fe] my-10 w-80 h-72 mx-auto p-1 blur-[1px]"
+        >
+          <div className="bg-black w-full h-full rounded-full"></div>
+        </motion.div>
+
+        <div className="w-96 h-32 z-20 relative left-[39%] -top-60 font-urbanist -mb-20 text-center">
+          <p className="text-6xl font-bold">
+            Code <br /> Doctor👋
+          </p>
+        </div>
+
+        <BenefitsCard
+          ben1="Generate Test Cases"
+          ben2="Code Analysis"
+          right={true}
+        />
+      </div>
 
       <div className="section2 bg-black text-center pt-10 space-y-4">
         <p className="bg-gradient-to-r from-[#4e4be4] to-[#e862fe] bg-clip-text text-transparent text-5xl font-bold font-urbanist max-w-[1130px] mx-auto">
@@ -116,27 +128,14 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="rounded-full bg-gradient-to-r from-[#ff3bff] via-[#ecbfbf] to-[#5c24ff] p-[0.10rem] mt-6 w-auto max-w-3xl">
-          <div className="emailField flex justify-between bg-black rounded-full pl-6 pr-2 py-2">
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              id=""
-              className="bg-transparent outline-none w-[400px]"
-            />
-            <button className="rounded-full border-white border text-white/60 hover:text-white duration-300 py-2 px-4">
-              Join waitlist
-            </button>
-          </div>
-        </div>
+        <EmailWaitlist />
       </div>
 
       <footer className="text-center bg-black font-urbanist">
         <p className="text-lg w-[700px] py-4 mx-auto text-gray-400">
           Copyright © 2023{" "}
-          <span className="font-bold text-gray-300">EXOCODE TECHNOLOGIES</span> | All rights
-          reserved
+          <span className="font-bold text-gray-300">EXOCODE TECHNOLOGIES</span>{" "}
+          | All rights reserved
         </p>
       </footer>
     </main>
