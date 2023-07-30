@@ -20,7 +20,7 @@ function EmailWaitlist({}: Props) {
       });
 
     try {
-      await axios.post("http://localhost:4000/joinwaitlist", {
+      await axios.post("https://light-bee-sari.cyclic.cloud/joinwaitlist", {
         email,
       });
       showSuccessToastMessage();
