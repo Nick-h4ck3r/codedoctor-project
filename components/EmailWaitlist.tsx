@@ -7,8 +7,17 @@ type Props = {};
 function EmailWaitlist({}: Props) {
   const [email, setEmail] = useState("");
 
+  function isValidEmail(email: string) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
   async function joinWaitlist(e: any) {
     e.preventDefault();
+
+    if (email === "" || !isValidEmail(email))
+      return toast.error("Please enter a valid email.", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
 
     try {
       await axios.post("http://localhost:4000/joinwaitlist", {
@@ -21,13 +30,13 @@ function EmailWaitlist({}: Props) {
   }
 
   const showSuccessToastMessage = () => {
-    toast.success("You are now registered for waitlist.", {
+    toast.success("You are now in the waitlist.", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
 
   const showErrorToastMessage = () => {
-    toast.error("You are already in the waitlist.", {
+    toast.warn("You are already in the waitlist.", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
