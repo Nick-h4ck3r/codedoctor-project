@@ -47,14 +47,14 @@ function EmailWaitlist({}: Props) {
 
   return (
     <>
-      <div className="rounded-full bg-gradient-to-r from-[#ff3bff] via-[#ecbfbf] to-[#5c24ff] p-[0.10rem] mt-4 w-auto max-w-4xl">
+      <div className="rounded-full bg-gradient-to-r from-[#ff3bff] via-[#ecbfbf] to-[#5c24ff] p-[0.10rem] mt-4 w-auto md:max-w-4xl">
         <div className="emailField flex justify-between bg-black rounded-full pl-6 pr-2 py-2">
           <input
             type="email"
             name="email"
             placeholder="Your Email"
             id="email"
-            className="bg-transparent outline-none w-[400px]"
+            className="bg-transparent outline-none w-[200px] md:w-[400px] text-white"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
